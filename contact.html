@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
 
     <!-- Modernizr JS File -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
 </head>
 
@@ -227,7 +228,25 @@
 	})
 	
 	</script>
-
+  <script>
+        $("#basic-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxGc6IKyCTaLhFo85uSrRgxBBV2glSF44K1q4-OeiA0fn9csVie/exec",
+                data:$("#basic-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 	
 	
 
