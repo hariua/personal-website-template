@@ -123,28 +123,26 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form class="contactform" method="post" action="https://script.google.com/macros/s/AKfycbxGc6IKyCTaLhFo85uSrRgxBBV2glSF44K1q4-OeiA0fn9csVie/exec">
+                <form class="contactform" id="basic-form" method="post" action="https://script.google.com/macros/s/AKfycbxGc6IKyCTaLhFo85uSrRgxBBV2glSF44K1q4-OeiA0fn9csVie/exec">
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
                                <label class="text-black-50" style="display: none" id="nameLabel">Please Enter a Valid Name</label>
-                                <input type="text" name="name" placeholder="YOUR NAME" id="inputName">
+                                <input type="text" name="name" placeholder="YOUR NAME" id="inputName" required minlength="4">
                             </div>
                             <div class="col-12 col-md-4">
-                         		<input type="email"  name="email" placeholder="YOUR EMAIL" id="inputEmail" >
+                         		<input type="email"  name="email" placeholder="YOUR EMAIL" id="inputEmail" required>
                             </div>
                             <div class="col-12 col-md-4">
                                <label class="text-black-50" style="display: none" id="subjectLabel">Please Enter a Valid Subject</label>
-                                <input type="text" name="subject" placeholder="YOUR SUBJECT" id="inputSubject">
+                                <input type="text" name="subject" placeholder="YOUR SUBJECT" id="inputSubject" minlength="4" required>
                             </div>
                             <div class="col-12">
                                <label class="text-black-50" style="display: none" id="messageLabel">Please Enter a Message</label>
-                                <textarea name="message" placeholder="YOUR MESSAGE" id="inputMessage"></textarea>
-                                <button type="submit" class="btn btn-contact" onClick="formBtn()">Send Message</button>
+                                <textarea name="message" placeholder="YOUR MESSAGE" id="inputMessage" required minlength="4"></textarea>
+                                <button type="submit" class="btn btn-contact">Send Message</button>
                             </div>
-                            <div class="col-12 form-message">
-                                <span class="output_message text-center font-weight-600 text-uppercase"></span>
-                            </div>
+                          
                         </div>
                     </div>
                 </form>
@@ -188,6 +186,7 @@
 <script>
 	$(document).ready(function()
 					 {
+		$("#basic-form").validate();
 		$("#inputName").blur(function()
 							{
 			var name=$(this).val();
@@ -197,40 +196,40 @@
 				}
 			else{
 				$("#nameLabel").hide()
+				
 			}
 		})
 		$("#inputSubject").blur(function()
 							{
 			var sub=$(this).val();
-			if(sub.length<2)
+			if(sub.length<4)
 				{
 					$("#subjectLabel").show()
 				}
 			else{
 				$("#subjectLabel").hide()
+				
 			}
 		})
 		$("#inputMessage").blur(function()
 							{
 			var msg=$(this).val();
-			if(msg.length<2)
+			if(msg.length<4)
 				{
 					$("#messageLabel").show()
 				}
 			else{
 				$("#messageLabel").hide()
+				
 			}
 		})
+		
 	})
 	
 	</script>
-	<script language="javascript">
-	function formBtn()
-		{
-			alert("Form Submitted")
-		}
-	</script>
 
+	
+	
 
 </body>
 
